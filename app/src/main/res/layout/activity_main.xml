@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                android:id="@+id/srl_list_data"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.core.widget.NestedScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <LinearLayout
+                                    android:id="@+id/ll_header"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="310dp"
+                                    android:background="@color/colorPrimary"
+                                    android:orientation="vertical"
+                                    app:layout_constraintTop_toTopOf="parent">
+
+                                    <androidx.constraintlayout.widget.ConstraintLayout
+                                        android:id="@+id/cl_header"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="15dp"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent">
+
+                                        <ImageView
+                                            android:id="@+id/iv_new"
+                                            android:layout_width="40dp"
+                                            android:layout_height="40dp"
+                                            android:layout_marginEnd="10dp"
+                                            android:contentDescription="@null"
+                                            android:src="@drawable/ic_launcher_background"
+                                            android:textSize="30sp"
+                                            android:tint="@color/colorWhite"
+                                            app:layout_constraintBottom_toBottomOf="parent"
+                                            app:layout_constraintStart_toStartOf="parent"
+                                            app:layout_constraintTop_toTopOf="parent" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:paddingStart="10dp"
+                                            android:paddingEnd="10dp"
+                                            android:text="@string/app_name"
+                                            android:textColor="@color/colorWhite"
+                                            android:textSize="22sp"
+                                            app:layout_constraintStart_toEndOf="@id/iv_new"
+                                            app:layout_constraintTop_toTopOf="parent" />
+
+                                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                                    <LinearLayout
+                                        android:id="@+id/ll_profile"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="5dp"
+                                        android:gravity="center"
+                                        android:orientation="vertical"
+                                        app:layout_constraintTop_toBottomOf="@id/cl_header">
+
+                                        <de.hdodenhof.circleimageview.CircleImageView
+                                            android:id="@+id/cv_profile"
+                                            android:layout_width="100dp"
+                                            android:layout_height="100dp"
+                                            android:contentDescription="@null"
+                                            android:scaleType="centerCrop"
+                                            app:civ_border_color="@color/colorWhite"
+                                            app:civ_border_width="2dp"
+                                            app:civ_circle_background_color="@color/colorWhite" />
+
+                                        <TextView
+                                            android:id="@+id/tv_full_name"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="10dp"
+                                            android:maxLines="1"
+                                            android:textColor="@color/colorWhite"
+                                            android:textSize="20sp"
+                                            tools:text="Full Name" />
+
+                                        <TextView
+                                            android:id="@+id/tv_email"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:maxLines="1"
+                                            android:textColor="@color/colorWhite"
+                                            android:textSize="15sp"
+                                            tools:text="Email@gmail.com" />
+
+                                    </LinearLayout>
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="7dp"
+                                    android:layout_marginTop="265dp"
+                                    android:layout_marginEnd="7dp"
+                                    android:elevation="10dp"
+                                    android:gravity="center"
+                                    android:orientation="vertical"
+                                    app:layout_constraintTop_toTopOf="parent">
+
+                                    <androidx.recyclerview.widget.RecyclerView
+                                        android:id="@+id/rv_list_item"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        tools:itemCount="2"
+                                        tools:listitem="@layout/item_menu_utama" />
+
+                                </LinearLayout>
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        </LinearLayout>
+                    </androidx.core.widget.NestedScrollView>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>
