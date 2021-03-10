@@ -19,6 +19,9 @@ import com.wahyuapp.myappmenubutton3x2.model.DataMenuMain;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class MenuMainAdapter extends RecyclerView.Adapter<MenuMainAdapter.ListViewHolder> {
     private ArrayList<DataMenuMain> listMenuUtama = new ArrayList<>();
     private Context mContext;
@@ -50,48 +53,49 @@ public class MenuMainAdapter extends RecyclerView.Adapter<MenuMainAdapter.ListVi
     }
 
     class ListViewHolder extends RecyclerView.ViewHolder {
-        private ImageView iv_menu;
-        private TextView tv_menu;
-        private LinearLayout ll_main;
+        @BindView(R.id.iv_menu)
+        ImageView ivMenu;
+        @BindView(R.id.tv_menu)
+        TextView tvMenu;
+        @BindView(R.id.ll_main)
+        LinearLayout llMain;
 
         ListViewHolder(View itemView) {
             super(itemView);
-            ll_main = itemView.findViewById(R.id.ll_main);
-            iv_menu = itemView.findViewById(R.id.iv_menu);
-            tv_menu = itemView.findViewById(R.id.tv_menu);
+            ButterKnife.bind(this, itemView);
         }
 
         void bind(final DataMenuMain dataMenuMain) {
-            tv_menu.setText(dataMenuMain.getName());
+            tvMenu.setText(dataMenuMain.getName());
 
             if (dataMenuMain.getId().equals("1")) {
-                Glide.with(mContext).load(R.drawable.ic_manue_radio_presenter_outline).into(iv_menu);
+                Glide.with(mContext).load(R.drawable.ic_manue_radio_presenter_outline).into(ivMenu);
             } else if (dataMenuMain.getId().equals("2")) {
-                Glide.with(mContext).load(R.drawable.ic_menu_customer_service_outline).into(iv_menu);
+                Glide.with(mContext).load(R.drawable.ic_menu_customer_service_outline).into(ivMenu);
             } else if (dataMenuMain.getId().equals("3")) {
-                Glide.with(mContext).load(R.drawable.ic_menu_coach_outline).into(iv_menu);
+                Glide.with(mContext).load(R.drawable.ic_menu_coach_outline).into(ivMenu);
             } else if (dataMenuMain.getId().equals("4")) {
-                Glide.with(mContext).load(R.drawable.ic_menu_it_support_outline).into(iv_menu);
+                Glide.with(mContext).load(R.drawable.ic_menu_it_support_outline).into(ivMenu);
             } else if (dataMenuMain.getId().equals("5")) {
-                Glide.with(mContext).load(R.drawable.ic_menu_firefighter_outline).into(iv_menu);
+                Glide.with(mContext).load(R.drawable.ic_menu_firefighter_outline).into(ivMenu);
             } else if (dataMenuMain.getId().equals("6")) {
-                Glide.with(mContext).load(R.drawable.ic_menu_pilot_outline).into(iv_menu);
+                Glide.with(mContext).load(R.drawable.ic_menu_pilot_outline).into(ivMenu);
             } else if (dataMenuMain.getId().equals("7")) {
-                Glide.with(mContext).load(R.drawable.ic_menu_police_outline).into(iv_menu);
+                Glide.with(mContext).load(R.drawable.ic_menu_police_outline).into(ivMenu);
             } else if (dataMenuMain.getId().equals("8")) {
-                Glide.with(mContext).load(R.drawable.ic_menu_designer_outline).into(iv_menu);
+                Glide.with(mContext).load(R.drawable.ic_menu_designer_outline).into(ivMenu);
             } else if (dataMenuMain.getId().equals("9")) {
-                Glide.with(mContext).load(R.drawable.ic_menu_eating_salad_outline).into(iv_menu);
+                Glide.with(mContext).load(R.drawable.ic_menu_eating_salad_outline).into(ivMenu);
             } else if (dataMenuMain.getId().equals("10")) {
-                Glide.with(mContext).load(R.drawable.ic_menu_eating_ice_cream_outline).into(iv_menu);
+                Glide.with(mContext).load(R.drawable.ic_menu_eating_ice_cream_outline).into(ivMenu);
             } else if (dataMenuMain.getId().equals("11")) {
-                Glide.with(mContext).load(R.drawable.ic_menu_surfing_outline).into(iv_menu);
+                Glide.with(mContext).load(R.drawable.ic_menu_surfing_outline).into(ivMenu);
             } else if (dataMenuMain.getId().equals("12")) {
-                Glide.with(mContext).load(R.drawable.ic_menu_fornite_outline).into(iv_menu);
+                Glide.with(mContext).load(R.drawable.ic_menu_fornite_outline).into(ivMenu);
             } else if (dataMenuMain.getId().equals("99")) {
-                Glide.with(mContext).load(R.drawable.ic_menu_data_analyst_outline).into(iv_menu);
+                Glide.with(mContext).load(R.drawable.ic_menu_data_analyst_outline).into(ivMenu);
             } else {
-                Glide.with(mContext).load(R.drawable.ic_launcher_background).into(iv_menu);
+                Glide.with(mContext).load(R.drawable.ic_launcher_background).into(ivMenu);
             }
 
             itemView.setOnClickListener(new View.OnClickListener() {
@@ -110,7 +114,7 @@ public class MenuMainAdapter extends RecyclerView.Adapter<MenuMainAdapter.ListVi
                 }
             });
 
-            setBtn(dataMenuMain.getActive(), ll_main);
+            setBtn(dataMenuMain.getActive(), llMain);
         }
     }
 

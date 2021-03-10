@@ -17,12 +17,23 @@ import com.wahyuapp.myappmenubutton3x2.model.DataMenuMain;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
-    private TextView tv_full_name, tv_email;
-    private ImageView cv_profile;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
-    private RecyclerView rvListItem;
+public class MainActivity extends AppCompatActivity {
+
     private MenuMainAdapter menuMainAdapter;
+
+    @BindView(R.id.cv_profile)
+    ImageView cvProfile;
+    @BindView(R.id.tv_full_name)
+    TextView tvFullName;
+    @BindView(R.id.tv_email)
+    TextView tvEmail;
+    @BindView(R.id.rv_list_item)
+    RecyclerView rvListItem;
+    @BindView(R.id.srl_list_data)
+    SwipeRefreshLayout srlListData;
 
     private int limitMenu = 6;
 
@@ -34,12 +45,12 @@ public class MainActivity extends AppCompatActivity {
         StrictMode.setVmPolicy(builder.build());
 
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
 
         // menu
         menuMainAdapter = new MenuMainAdapter();
         menuMainAdapter.notifyDataSetChanged();
 
-        rvListItem = findViewById(R.id.rv_list_item);
         rvListItem.setHasFixedSize(true);
         showRecyclerList();
         loadMenu();
@@ -50,10 +61,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        loadInit();
         loadData();
 
-        final SwipeRefreshLayout srlListData = findViewById(R.id.srl_list_data);
         srlListData.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -63,16 +72,10 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void loadInit() {
-        cv_profile = findViewById(R.id.cv_profile);
-        tv_full_name = findViewById(R.id.tv_full_name);
-        tv_email = findViewById(R.id.tv_email);
-    }
-
     private void loadData() {
-        Glide.with(this).load(R.drawable.ic_default_profile).into(cv_profile);
-        tv_full_name.setText("Full Name");
-        tv_email.setText("Email");
+        Glide.with(this).load(R.drawable.ic_default_profile).into(cvProfile);
+        tvFullName.setText("Full Name");
+        tvEmail.setText("Email");
     }
 
     private void loadMenu() {

@@ -13,15 +13,23 @@ import com.wahyuapp.myappmenubutton3x2.model.DataMenuMain;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class MenuMainListActivity extends AppCompatActivity {
 
     private MenuMainAdapter menuMainAdapter;
-    private RecyclerView rvListItem;
+
+    @BindView(R.id.rv_list_item)
+    RecyclerView rvListItem;
+    @BindView(R.id.srl_list_data)
+    SwipeRefreshLayout srlListData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_menu);
+        ButterKnife.bind(this);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("All Menu");
@@ -34,7 +42,7 @@ public class MenuMainListActivity extends AppCompatActivity {
 
         menuMainAdapter = new MenuMainAdapter();
         menuMainAdapter.notifyDataSetChanged();
-        rvListItem = findViewById(R.id.rv_list_item);
+
         rvListItem.setHasFixedSize(true);
         showRecyclerList();
 
@@ -44,7 +52,6 @@ public class MenuMainListActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        final SwipeRefreshLayout srlListData = findViewById(R.id.srl_list_data);
         srlListData.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
